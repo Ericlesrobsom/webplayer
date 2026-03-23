@@ -15,42 +15,123 @@ WebPlayer IPTV em Go com cache SQLite, favoritos no servidor, histórico e pagin
 - **Categorias com scroll** — funciona no PC (mouse wheel) e celular
 - **Login com backdrop** — posters de filmes no fundo
 
-## Deploy Rápido
+## COMANDOS INSTALAÇÃO
 
 ```bash
-# 1. Descompacte na VPS
-unzip iptv-webplayer.zip && cd iptv-webplayer
+sudo apt update && sudo apt install -y golang-go gcc  unzip
+```
+```bash
+wget https://go.dev/dl/go1.22.1.linux-amd64.tar.gz
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
+```
+```bash
+export PATH=$PATH:/usr/local/go/bin
+echo "export PATH=$PATH:/usr/local/go/bin" >> ~/.profile
+```
+```bash
+git clone https://github.com/Ericlesrobsom/webplayer.git
+```
+```bash
+cd webplayer
+```
+```bash
+chmod +x run.sh && ./run.sh
+```
+## Configuração LIGAR ALTOMATICO
 
-# 2. Configure o .env
-cp .env.example .env
-nano .env
+```bash
+sudo nano /etc/systemd/system/webplayer.service
+```
+```bash
+[Unit]
+Description=IPTV WebPlayer
+After=network.target
 
-# 3. Rode
-chmod +x run.sh
-./run.sh
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/webplayer
+ExecStart=/root/webplayer/webplayer
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+```
+```bash
+Ctrl + c
+```
+# Compila primeiro
+
+```bash
+cd /root/webplayer
+CGO_ENABLED=1 go build -o webplayer .
+```
+# Ativa o serviço
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable webplayer
+sudo systemctl start webplayer
+```
+# Ver status
+
+```bash
+sudo systemctl status webplayer
+```
+# Ver logs
+
+```bash
+sudo journalctl -u webplayer -f
+```
+# COMANDOS ULTILISAVEIS
+```bash
+sudo systemctl restart webplayer   # reiniciar
+sudo systemctl stop webplayer      # parar
+sudo systemctl status webplayer    # ver status
 ```
 
 ## Configuração (.env)
 
 ```env
-# URL do servidor IPTV (sem barra no final)
-SERVER_URL = http://meuserver.com:80
+========================================
+  CONFIGURAÇÃO DO WEBPLAYER IPTV
+========================================
 
-# Porta
+# URL do servidor IPTV principal (sem barra no final)
+SERVER_URL = http://king.of7seas.uk
+
+# Porta do WebPlayer
 PORT = 80
 
-# Nome (aparece se não tiver logo)
-PLAYER_NAME = Meu IPTV
+# Nome do player (aparece se não tiver logo)
+PLAYER_NAME = IPTV Player
 
-# Usuário para sync automático (um usuário válido do servidor)
-SYNC_USER = sync_user
-SYNC_PASS = sync_pass
+# Logo: coloque o arquivo em static/img/logo.png
+# Tamanho recomendado: 200x60px, fundo transparente (PNG)
+# LOGO = static/img/logo.png
 
-# Intervalo de sync em horas
+# Usuário do sistema para sincronização automática
+# Este usuário será usado para buscar categorias, filmes, séries a cada 6h
+# IMPORTANTE: use um usuário válido do seu servidor IPTV
+SYNC_USER = 693076326
+SYNC_PASS = 105787916
+
+# Intervalo de sincronização em horas (padrão: 6)
 SYNC_INTERVAL = 6
 
-# Itens por página
+# Itens por página (padrão: 100)
 ITEMS_PER_PAGE = 100
+
+# Tema/Cor personalizada (padrão: roxo #6c5ce7)
+# Formato: COR_PRINCIPAL,COR_SECUNDARIA
+# Exemplos:
+   ACCENT = #d5c315,#776c09   (dourado)
+#   ACCENT = #e74c3c,#c0392b   (vermelho)
+#   ACCENT = #00b894,#00a383   (verde)
+#   ACCENT = #0984e3,#74b9ff   (azul)
+#   ACCENT = #e84393,#fd79a8   (rosa)
+# ACCENT = #6c5ce7,#a29bfe
 ```
 
 ## Logo
