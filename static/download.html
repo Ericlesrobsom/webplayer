@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNUX - Download</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0a0a0f;--bg2:#111119;--bg3:#1a1a26;--border:#2a2a3a;--t1:#e8e8f0;--t2:#8888a0;--t3:#5a5a70;--accent:#6c5ce7;--accent-l:#a29bfe;--grad:linear-gradient(135deg,#6c5ce7,#a29bfe)}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--t1);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:40px 20px;-webkit-font-smoothing:antialiased}
+.hero{text-align:center;max-width:600px;margin-bottom:48px;animation:fadeUp .6s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero img{width:80px;height:80px;border-radius:20px;margin-bottom:20px;box-shadow:0 8px 32px rgba(108,92,231,.3)}
+.hero h1{font-size:40px;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+.hero p{color:var(--t2);font-size:16px;line-height:1.6}
+.cards{display:flex;gap:20px;flex-wrap:wrap;justify-content:center;max-width:800px;margin-bottom:48px}
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:32px 28px;width:240px;text-align:center;transition:all .3s;animation:fadeUp .6s ease}
+.card:nth-child(2){animation-delay:.1s}.card:nth-child(3){animation-delay:.2s}
+.card:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 8px 32px rgba(0,0,0,.3)}
+.card .icon{font-size:48px;margin-bottom:16px}
+.card h3{font-size:18px;font-weight:700;margin-bottom:8px}
+.card p{font-size:13px;color:var(--t3);margin-bottom:20px;line-height:1.5}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:var(--grad);border-radius:10px;color:#fff;font-size:14px;font-weight:700;text-decoration:none;transition:all .2s;border:none;cursor:pointer}
+.btn:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 20px rgba(108,92,231,.4)}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--t1)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent-l);box-shadow:none}
+.features{max-width:600px;text-align:center;margin-bottom:48px}
+.features h2{font-size:22px;font-weight:700;margin-bottom:20px}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.feat{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
+.feat .emoji{font-size:24px;margin-bottom:6px}
+.feat p{font-size:12px;color:var(--t2);font-weight:600}
+.instructions{max-width:600px;background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:32px}
+.instructions h3{font-size:16px;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.step{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+.step-num{width:28px;height:28px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.step-text{font-size:14px;color:var(--t2);line-height:1.5}
+.footer{color:var(--t3);font-size:12px;margin-top:auto;padding-top:40px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <img src="/icon-192.png" alt="SNUX">
+  <h1>SNUX</h1>
+  <p>Seu streaming de canais ao vivo, filmes e séries.<br>Baixe o app e assista em qualquer dispositivo.</p>
+</div>
+
+<div class="cards">
+  <div class="card">
+    <div class="icon">📱</div>
+    <h3>Android</h3>
+    <p>Baixe o APK e instale direto no seu celular ou tablet Android.</p>
+    <a href="/downloads/snux.apk" class="btn" id="btnAndroid">⬇ Baixar APK</a>
+  </div>
+  <div class="card">
+    <div class="icon">💻</div>
+    <h3>Windows / PC</h3>
+    <p>Baixe o app para Windows. Funciona em qualquer PC.</p>
+    <a href="/downloads/SNUX.exe" class="btn">⬇ Baixar Windows</a>
+  </div>
+  <div class="card">
+    <div class="icon">🍎</div>
+    <h3>iPhone / iPad</h3>
+    <p>Abra no Safari, toque em Compartilhar e "Adicionar à Tela de Início".</p>
+    <a href="/" class="btn btn-outline">🌐 Abrir no Safari</a>
+  </div>
+</div>
+
+<div class="features">
+  <h2>Tudo em um lugar</h2>
+  <div class="feat-grid">
+    <div class="feat"><div class="emoji">📺</div><p>TV ao Vivo</p></div>
+    <div class="feat"><div class="emoji">🎬</div><p>Filmes</p></div>
+    <div class="feat"><div class="emoji">📡</div><p>Séries</p></div>
+    <div class="feat"><div class="emoji">⭐</div><p>Favoritos</p></div>
+    <div class="feat"><div class="emoji">🕐</div><p>Histórico</p></div>
+    <div class="feat"><div class="emoji">🔍</div><p>Busca</p></div>
+  </div>
+</div>
+
+<div class="instructions" id="iosInstructions">
+  <h3>🍎 Como instalar no iPhone/iPad</h3>
+  <div class="step"><div class="step-num">1</div><div class="step-text">Abra o link no <strong>Safari</strong> (não funciona no Chrome do iOS)</div></div>
+  <div class="step"><div class="step-num">2</div><div class="step-text">Toque no ícone de <strong>Compartilhar</strong> (quadrado com seta pra cima)</div></div>
+  <div class="step"><div class="step-num">3</div><div class="step-text">Role e toque em <strong>"Adicionar à Tela de Início"</strong></div></div>
+  <div class="step"><div class="step-num">4</div><div class="step-text">Toque em <strong>Adicionar</strong> — pronto, o app aparece na sua tela!</div></div>
+</div>
+
+<div class="footer">SNUX Streaming &copy; 2026</div>
+
+</body>
+</html>
